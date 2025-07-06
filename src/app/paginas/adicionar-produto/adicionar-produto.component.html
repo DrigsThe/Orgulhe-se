@@ -1,0 +1,78 @@
+<div class="container-principal">
+  <div class="container my-5">
+    <div class="row">
+      <!-- Galeria de Imagens Editável -->
+      <div class="col-md-6">
+        <img [src]="imagens[imagemSelecionada]" alt="Imagem do Produto" class="img-fluid mb-3 img-principal"
+          *ngIf="imagens.length > 0" />
+        <div class="row">
+          <div class="col-4 mb-2" *ngFor="let img of imagens; let idx = index">
+            <img [src]="img" alt="Miniatura {{idx + 1}}" class="img-miniatura"
+              [class.selecionada]="idx === imagemSelecionada" (click)="imagemSelecionada = idx" />
+            <button class="btn btn-sm btn-danger mt-1" (click)="removerImagem(idx)">Remover</button>
+          </div>
+          <div class="col-4 mb-2" *ngFor="let vazio of [].constructor(6 - imagens.length); let i = index">
+            <label class="img-placeholder-upload">
+              <span>Adicionar Imagem</span>
+              <input type="file" (change)="adicionarImagemDireta($event, i)" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalhes do Produto Editáveis -->
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="nomeProduto" placeholder="Nome do Produto" class="form-control mb-2" />
+        <p class="text-muted">Cód. #28379{{ codigoProduto }}</p>
+        <input type="number" [(ngModel)]="precoProduto" placeholder="Preço" class="form-control mb-2" />
+
+        <div class="mb-2">
+          <label><strong>Cor:</strong></label>
+          <div *ngFor="let cor of cores; let i = index" class="d-flex align-items-center mb-1">
+            <input type="text" [(ngModel)]="cor.nome" placeholder="Nome da cor" class="form-control me-2" />
+            <input type="color" [(ngModel)]="cor.valor" class="form-control-color me-2" />
+            <button class="btn btn-sm btn-danger" (click)="removerCor(i)">Remover</button>
+          </div>
+          <button class="btn btn-sm btn-primary mt-1" (click)="adicionarCor()">Adicionar Cor</button>
+        </div>
+
+        <div class="mb-2">
+          <label><strong>Tamanho:</strong></label>
+          <div *ngFor="let tamanho of tamanhos; let i = index" class="d-flex align-items-center mb-1">
+            <input type="text" [(ngModel)]="tamanhos[i]" placeholder="Tamanho" class="form-control me-2" />
+            <button class="btn btn-sm btn-danger" (click)="removerTamanho(i)">Remover</button>
+          </div>
+          <button class="btn btn-sm btn-primary mt-1" (click)="adicionarTamanho()">Adicionar Tamanho</button>
+        </div>
+
+        <button class="btn btn-dark mt-2" (click)="salvarProduto()">SALVAR PRODUTO</button>
+
+        <textarea [(ngModel)]="descricaoProduto" placeholder="Descrição do Produto"
+          class="form-control mt-4 textarea-descricao"></textarea>
+      </div>
+    </div>
+
+    <!-- Sobre o Produto Editável -->
+    <div class="row mt-5 align-items-center">
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="sobreTitulo" placeholder="Título Sobre o Produto" class="form-control mb-2" />
+        <textarea [(ngModel)]="sobreTexto" placeholder="Texto sobre o produto" class="form-control textarea-sobre"></textarea>
+      </div>
+      <div class="col-md-6">
+        <img [src]="imagens[imagens.length - 2]" *ngIf="imagens.length > 1" alt="Sobre o Produto" class="img-sobre" />
+      </div>
+    </div>
+
+    <!-- Tecnologias Editável -->
+    <div class="row mt-4 align-items-center">
+      <div class="col-md-6">
+        <img [src]="imagens[imagens.length - 1]" *ngIf="imagens.length > 1" alt="Tecnologias do Produto"
+          class="img-sobre" />
+      </div>
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="tecnologiaTitulo" placeholder="Título Tecnologias" class="form-control mb-2" />
+        <textarea [(ngModel)]="tecnologiaTexto" placeholder="Texto das tecnologias" class="form-control textarea-tecnologia"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

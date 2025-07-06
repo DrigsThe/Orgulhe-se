@@ -1,0 +1,491 @@
+.banner {
+  background: url('/assets/avatar.jpg') center/cover no-repeat;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+}
+.banner-content {
+  background: rgba(0,0,0,0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 420px;      /* Limita a largura máxima */
+  width: 100%;           /* Responsivo */
+  margin-bottom:3rem;   /* Espaço para não encostar na divisão cinza */
+  box-sizing: border-box;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+.seller-name {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+.stars .star {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+.reviews {
+  color: #eee;
+}
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1.5em;
+  border-radius: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1em;
+}
+.stats-section {
+  background: #eee;
+  padding: 2rem;
+}
+.stats-list {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.stat-value {
+  display: block;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 0.2em;
+}
+.tabs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0 1rem 0;
+}
+.tabs button {
+  background: none;
+  border: none;
+  padding: 0.7em 2em;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: border 0.2s;
+}
+.tabs button.active {
+  border-bottom: 3px solid #007bff;
+  color: #007bff;
+}
+.dashboard {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.dashboard-cards {
+  display: flex;
+  gap: 20rem;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+.dashboard-value {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+.positive { color: #28a745; }
+.negative { color: #dc3545; }
+
+.chat-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  padding: 1.5rem;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  gap: 1rem;
+}
+
+.chat-list {
+  width: 250px;
+  background: #f7f7f7;
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 1px 3px #0001;
+  overflow-y: auto;
+}
+
+.chat-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.7rem;
+  transition: background 0.2s;
+}
+
+.chat-user.active,
+.chat-user:hover {
+  background: #e0f7fa;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-message {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-message.cliente {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chat-message.vendedor {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.chat-avatar {
+  font-size: 2rem;
+  margin: 0 0.5rem;
+}
+
+.chat-bubble {
+  background: #f1f0f0;
+  padding: 0.7rem 1.2rem;
+  border-radius: 1.2rem;
+  max-width: 70%;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px #0001;
+}
+
+.chat-message.vendedor .chat-bubble {
+  background: #e0f7fa;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input[type="text"] {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 2em;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.produtos-section {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.produtos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.produtos-tabela table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.produtos-tabela th {
+  background: #f7f7f7;
+  padding: 0.8rem;
+  text-align: left;
+  font-weight: bold;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.produtos-tabela td {
+  background: #fafbfc;
+  padding: 0.8rem;
+  vertical-align: middle;
+  border-radius: 0.5rem;
+}
+
+.produto-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.produto-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.produto-nome {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.status-badge {
+  padding: 0.3em 1em;
+  border-radius: 1em;
+  font-size: 0.95em;
+  font-weight: bold;
+  color: #fff;
+  background: #bbb;
+  display: inline-block;
+}
+
+.status-entregue { background: #28a745; }
+.status-cancelado { background: #dc3545; }
+
+.btn-acao {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  transition: background 0.2s;
+}
+
+.btn-acao:hover {
+  background: #f7f7f7;
+}
+
+.no-produto {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.pedidos-section {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.pedidos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.pedido-busca {
+  padding: 0.6em 1em;
+  border-radius: 2em;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1em;
+  min-width: 220px;
+}
+
+.pedidos-tabela table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.pedidos-tabela th {
+  background: #f7f7f7;
+  padding: 0.8rem;
+  text-align: left;
+  font-weight: bold;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.pedidos-tabela td {
+  background: #fafbfc;
+  padding: 0.8rem;
+  vertical-align: middle;
+  border-radius: 0.5rem;
+}
+
+.pedido-cliente {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pedido-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.status-badge {
+  padding: 0.3em 1em;
+  border-radius: 1em;
+  font-size: 0.95em;
+  font-weight: bold;
+  color: #fff;
+  background: #bbb;
+  display: inline-block;
+}
+.status-entregue { background: #28a745; }
+.status-processando { background: #ffc107; color: #333; }
+.status-enviado { background: #007bff; }
+.status-cancelado { background: #dc3545; }
+
+.btn-acao {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  transition: background 0.2s;
+}
+.btn-acao:hover {
+  background: #f7f7f7;
+}
+
+.no-pedido {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.avaliacoes-section {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.avaliacoes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.avaliacao-card {
+  background: #fafbfc;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px #0001;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.avaliacao-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avaliacao-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.avaliacao-stars {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+.star {
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.avaliacao-text {
+  font-size: 1.05rem;
+  color: #333;
+  margin: 0.5rem 0 0 0;
+}
+
+.avaliacao-data {
+  color: #888;
+  font-size: 0.95em;
+}
+
+.no-avaliacao {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.avatar-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.avatar-upload input[type="file"] {
+  display: none;
+}
+.avatar-edit {
+  font-size: 0.9em;
+  color: #007bff;
+  margin-top: 0.3em;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.seller-name-input {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+}
+.seller-name-input:focus {
+  background: rgba(0,0,0,0.2);
+  border-radius: 0.5em;
+}

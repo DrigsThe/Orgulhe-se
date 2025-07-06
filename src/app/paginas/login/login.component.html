@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="login-section">
+        <h2 class="title">Fazer Login</h2>
+
+        <button class="social facebook">Entro com Facebook <img class="icon" src="assets/logos/logo-facebook.png" alt="Logo do Facebook"></button>
+        <button class="social google">Entre com Google <img src="assets/logos/logo-google.png" alt="Logo da Google" class="icon"></button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <form (ngSubmit)="onLogin()">
+            <input type="email" placeholder="E-mail" name="email" required>
+            <input type="password" placeholder="Senha" name="senha" required>
+            <a href="#" class="forgot">Esqueceu a Senha?</a>
+            <button type="submit" class="login-btn">Fazer Login</button>
+        </form>
+
+        <a href="#" class="create-account">Criar conta</a>
+
+        <div class="logos">
+            <img src="assets/logos/logo-uj.png" alt="Logo da Unijorge">
+            <img src="assets/logos/logo-amado.png" alt="Logo do Núcleo Amado">
+        </div>
+    </div>
+
+    <div class="image-section">
+        <img src="assets/img-login.png" alt="Casal de duas mulheres comm bandeira LGBTQIAP+">
+    </div>
+</div>

@@ -1,0 +1,120 @@
+.footer-container{
+    background-color: #A3B5CC;
+    padding: 40px 20px 20px;
+    color: #000;
+}
+
+.data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 0 40px 0;
+}
+
+.data > div{
+    flex: 1 1 180px;
+}
+
+h6{
+    font-weight: bold;
+    color: #4A4A48;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.services, .about-list, .social-media{
+    list-style: none;
+}
+
+.services li, .about-list li, .social-media li{
+    margin-bottom: 8px;
+}
+
+.services li a, .about-list li a, .social-media li a{
+    text-decoration: none;
+    color: #4A4A48;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.social-media img{
+    height: 20px;
+}
+
+.follow{
+    display: flex;
+    margin-right: 100px;
+}
+
+.image-footer{
+    margin-left: 55px;
+    width: 80%;
+    max-width: 100%;
+    display: block;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.cards li{
+    margin: 0;
+}
+
+.cards img{
+    height: 40px;
+    width: 72px;
+}
+
+.divider{
+    content: '';
+    height: 1px;
+    background: #898787;
+    margin: 30px 0;
+    position: relative;
+}
+
+.logos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 60px 0;
+}
+
+.logo-uva{
+    width: 9%;
+    margin-right: 15px;
+}
+
+.logo-uj{
+    width: 14%;
+    margin-right: 15px;
+}
+
+.logo-amado{
+    width: 14%;
+}
+
+.language{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+.language span{
+    margin: 0;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.language img{
+    height: 25px;
+    width: 40px;
+    margin-right: 10px;
+}

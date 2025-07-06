@@ -1,0 +1,160 @@
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.login-section{
+    width: 50%;
+    background-color: #879cb7;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.title{
+    font-size: 28px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    background: linear-gradient(to right, #5BCEFA, #F5A9B8, #FFFFFF, #F5A9B8, #5BCEFA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+}
+
+.social{
+    width: 30%;
+    margin: 8px 0;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divider{
+    margin: 15px 0;
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.divider span{
+    background: #879cb7;
+    padding: 0 10px;
+    color: #333;
+    position: relative;
+    z-index: 1;
+}
+
+.divider::before{
+    content: '';
+    height: 1px;
+    background: #555;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+form{
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.forms{
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#terms{
+    width: 50%;
+    font-size: 11px;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+#privacy{
+    margin-top: 15px;
+    color: #333;
+    width: 20px;
+}
+
+
+#link{
+    font-size: 11px;
+    color: #000;
+    text-decoration: underline;
+}
+
+.login-btn{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #888;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account-section{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.account{
+    margin-top: 15px;
+    margin-left: 35px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #333;
+}
+
+.logos{
+    margin-top: 18%;
+    display: flex;
+    gap: 20px;
+}
+
+.logos img{
+    height: 40px;
+    object-fit: contain;
+}
+
+.image-section{
+    width: 50%;
+    background-color: #A3B5CC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-section img{
+    width: 80%;
+    height: auto;
+}

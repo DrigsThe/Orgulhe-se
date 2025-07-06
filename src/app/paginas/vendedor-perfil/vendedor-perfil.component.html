@@ -1,0 +1,255 @@
+<!-- Banner com fundo -->
+<div class="banner">
+  <div class="banner-content">
+    <!-- Imagem de perfil editável -->
+    <label class="avatar-upload">
+      <img [src]="vendedorImagem" alt="Avatar" class="avatar">
+      <input type="file" accept="image/*" (change)="onImagemChange($event)" hidden>
+      <span class="avatar-edit">Trocar foto</span>
+    </label>
+    <!-- Nome editável -->
+    <input
+      class="seller-name-input"
+      [(ngModel)]="vendedorNome"
+      maxlength="30"
+      placeholder="Nome do vendedor"
+    />
+
+    <!-- Estrelas -->
+    <div class="stars">
+      <span class="star filled">&#9733;</span>
+      <span class="star">&#9734;&#9734;&#9734;&#9734;</span>
+    </div>
+
+    <!-- Avaliações -->
+    <small class="reviews">2 avaliações</small>
+
+    <!-- Botão -->
+    <div>
+      <button class="btn-primary">+ Adicionar Produto</button>
+    </div>
+  </div>
+</div>
+
+<!-- Seção de Estatísticas -->
+<div class="stats-section">
+  <h5>Estatísticas</h5>
+  <div class="stats-list">
+    <div>
+      <span>Vendas totais</span>
+      <span class="stat-value">R$4.500,00</span>
+    </div>
+    <div>
+      <span>Clientes</span>
+      <span class="stat-value">150</span>
+    </div>
+    <div>
+      <span>Produtos Vendidos</span>
+      <span class="stat-value">200</span>
+    </div>
+    <div>
+      <span>Taxa de Conversão</span>
+      <span class="stat-value">30%</span>
+    </div>
+  </div>
+</div>
+
+<!-- Abas -->
+<div class="tabs">
+  <button [class.active]="aba === 'dashboard'" (click)="aba = 'dashboard'">Dashboard</button>
+  <button [class.active]="aba === 'produtos'" (click)="aba = 'produtos'">Produtos</button>
+  <button [class.active]="aba === 'pedidos'" (click)="aba = 'pedidos'">Pedidos</button>
+  <button [class.active]="aba === 'mensagens'" (click)="aba = 'mensagens'">Mensagens</button>
+  <button [class.active]="aba === 'avaliacoes'" (click)="aba = 'avaliacoes'">Avaliações</button>
+</div>
+
+<!-- Chat só aparece quando aba === 'mensagens' -->
+<!-- Dentro da aba mensagens -->
+<div class="chat-section" *ngIf="aba === 'mensagens'">
+  <h5>Mensagens</h5>
+  <div class="chat-container">
+    <!-- Lista de pessoas -->
+    <div class="chat-list">
+      <div class="chat-user active">
+        <img src="assets/hornet.png" class="chat-avatar" width="36" height="36" alt="Hornet">
+        <span>Hornet</span>
+      </div>
+      <div class="chat-user">
+        <img src="assets/jujuba.png" class="chat-avatar" width="36" height="36" alt="Jujuba">
+        <span>Jujuba</span>
+      </div>
+      <!-- Adicione mais usuários conforme necessário -->
+    </div>
+    <!-- Janela do chat -->
+    <div class="chat-main">
+      <div class="chat-messages">
+        <div class="chat-message cliente">
+          <img src="assets/hornet.png" class="chat-avatar" width="36" height="36" alt="Cliente">
+          <div class="chat-bubble">Olá, gostaria de saber sobre meu pedido.</div>
+        </div>
+        <div class="chat-message vendedor">
+          <img src="assets/Gary.jpg" class="chat-avatar" width="36" height="36" alt="Vendedor">
+          <div class="chat-bubble">Olá! Seu pedido já foi enviado hoje.</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" placeholder="Digite sua mensagem..." />
+        <button class="btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Avaliações só aparece quando aba === 'avaliacoes' -->
+<div class="avaliacoes-section" *ngIf="aba === 'avaliacoes'">
+  <h5>Avaliações dos Clientes</h5>
+  <div class="avaliacoes-list">
+    <div class="avaliacao-card" *ngFor="let avaliacao of avaliacoes">
+      <div class="avaliacao-header">
+        <img [src]="avaliacao.foto" class="avaliacao-avatar" width="48" height="48" alt="Cliente">
+        <div>
+          <strong>{{ avaliacao.nome }}</strong>
+          <div class="avaliacao-stars">
+            <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+              <span class="star" [class.filled]="i < avaliacao.estrelas">&#9733;</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <p class="avaliacao-text">{{ avaliacao.comentario }}</p>
+      <small class="avaliacao-data">{{ avaliacao.data }}</small>
+    </div>
+    <div *ngIf="avaliacoes.length === 0" class="no-avaliacao">Nenhuma avaliação encontrada.</div>
+  </div>
+</div>
+
+<!-- pedidos só aparece quando aba === 'pedidos' -->
+<div class="pedidos-section" *ngIf="aba === 'pedidos'">
+  <div class="pedidos-header">
+    <h5>Pedidos Recentes</h5>
+    <input type="text" class="pedido-busca" placeholder="Buscar pedido ou cliente..." [(ngModel)]="buscaPedido">
+  </div>
+  <div class="pedidos-tabela">
+    <table>
+      <thead>
+        <tr>
+          <th>Pedido</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidosFiltrados">
+          <td>{{ pedido.id }}</td>
+          <td>
+            <div class="pedido-cliente">
+              <img src="assets/hornet.png" class="pedido-avatar" width="36" height="36" alt="Cliente">
+              <span>{{ pedido.cliente }}</span>
+            </div>
+          </td>
+          <td>{{ pedido.data }}</td>
+          <td>
+            <span class="status-badge"
+              [ngClass]="{
+                'status-entregue': pedido.status === 'entregue',
+                'status-processando': pedido.status === 'processando',
+                'status-enviado': pedido.status === 'enviado',
+                'status-cancelado': pedido.status === 'cancelado'
+              }">
+              {{
+                pedido.status === 'entregue' ? 'Entregue' :
+                pedido.status === 'processando' ? 'Processando' :
+                pedido.status === 'enviado' ? 'Enviado' : 'Cancelado'
+              }}
+            </span>
+          </td>
+          <td>{{ pedido.total }}</td>
+          <td>
+            <button class="btn-acao" title="Imprimir">🖨️</button>
+            <button class="btn-acao" title="Visualizar">👁️</button>
+          </td>
+        </tr>
+        <tr *ngIf="pedidosFiltrados.length === 0">
+          <td colspan="6" class="no-pedido">Nenhum pedido encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- produtos só aparece quando aba === 'produtos' -->
+<div class="produtos-section" *ngIf="aba === 'produtos'">
+  <div class="produtos-header">
+    <h5>Meus Produtos Cadastrados</h5>
+    <button class="btn-primary">+ Adicionar Produto</button>
+  </div>
+  <div class="produtos-tabela">
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Estoque</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of meusProdutos">
+          <td>
+            <div class="produto-info">
+              <img [src]="produto.imagem" alt="Produto" class="produto-avatar">
+              <span class="produto-nome">{{ produto.nome }}</span>
+            </div>
+          </td>
+          <td>{{ produto.estoque }}</td>
+          <td>
+            <span class="status-badge"
+              [ngClass]="produto.status === 'ativo' ? 'status-entregue' : 'status-cancelado'">
+              {{ produto.status === 'ativo' ? 'Ativo' : 'Desativado' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn-acao" title="Excluir" (click)="excluirProduto(produto)">🗑️</button>
+          </td>
+        </tr>
+        <tr *ngIf="meusProdutos.length === 0">
+          <td colspan="4" class="no-produto">Nenhum produto cadastrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Dashboard só aparece quando aba === 'dashboard' -->
+<div class="dashboard-section" *ngIf="aba === 'dashboard'">
+  <h5>Dashboard</h5>
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <h6>Vendas de Hoje</h6>
+      <div class="dashboard-value">R$ {{ dashboard.vendasHoje | number:'1.2-2' }}</div>
+      <span [class.positive]="variacaoVendas >= 0" [class.negative]="variacaoVendas < 0">
+        {{ variacaoVendas | number:'1.1-1' }}%
+        <small>em relação a ontem</small>
+      </span>
+    </div>
+    <div class="dashboard-card">
+      <h6>Pedidos de Hoje</h6>
+      <div class="dashboard-value">{{ dashboard.pedidosHoje }}</div>
+      <span [class.positive]="variacaoPedidos >= 0" [class.negative]="variacaoPedidos < 0">
+        {{ variacaoPedidos | number:'1.1-1' }}%
+        <small>em relação a ontem</small>
+      </span>
+    </div>
+    <div class="dashboard-card">
+      <h6>Taxa de Conversão</h6>
+      <div class="dashboard-value">{{ (dashboard.conversaoHoje * 100) | number:'1.1-1' }}%</div>
+      <span [class.positive]="variacaoConversao >= 0" [class.negative]="variacaoConversao < 0">
+        {{ variacaoConversao | number:'1.1-1' }}%
+        <small>em relação a ontem</small>
+      </span>
+    </div>
+  </div>
+</div>

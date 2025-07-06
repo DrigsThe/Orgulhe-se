@@ -1,0 +1,66 @@
+<div class="header">
+    <a href="#" class="logo-principal"><img src="assets/logos/logo-amado-header.png" alt="Logo do Núcleo AMADO"></a>
+
+    <div class="search-container">
+        <input type="text" placeholder="Pesquisar..." class="search-bar" [(ngModel)]="searchTerm"
+            (input)="onSearchChange()" (keypress)="onKeyPress($event)" (focus)="onInputFocus()" (blur)="onInputBlur()">
+        <button class="search-btn" (click)="onSearch()">
+            <img src="assets/logos/logo-search.png" alt="Ícone de Pesquisa" class="search">
+        </button>
+    </div>
+
+    <div class="navigation">
+        <a href="#"><img src="assets/logos/logo-user.png" alt="Ícone de usuário" class="logo"></a>
+        <div class="divider"></div>
+        <a href="#" class="position-relative" (click)="toggleCart(); $event.preventDefault()">
+            <img src="assets/logos/logo-bag.png" alt="Ícone de carrinho" class="logo">
+            <span *ngIf="totalCarrinho > 0" class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                {{ totalCarrinho }}
+            </span>
+        </a>
+
+        <div *ngIf="showCart" class="cart-overlay" (click)="closeCart()"></div>
+
+        <div *ngIf="showCart" class="cart-panel">
+            <div class="cart-header">
+                <h5>Carrinho</h5>
+                <button class="close-btn" (click)="toggleCart()">&times;</button>
+            </div>
+
+            <div class="cart-items">
+                <div *ngFor="let item of itensCarrinho" class="cart-item">
+                    <div class="item-info">
+                        <div class="item-name">{{ item.nome }}</div>
+                        <div class="item-variation">{{ item.cor }} / {{ item.tamanho }}</div>
+                    </div>
+                    <div class="item-quantity">{{ item.quantidade }}</div>
+                    <div class="item-prices">
+                        <div class="original-price" *ngIf="item.precoOriginal > item.preco">R$ {{
+                            item.precoOriginal.toFixed(2) }}</div>
+                        <div class="current-price">R$ {{ item.preco.toFixed(2) }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shipping-section">
+                <div class="shipping-title">Calcular frete e o prazo de entrega:</div>
+                <div class="cep-input">
+                    <input type="text" placeholder="INSIRA SEU CEP">
+                    <button class="calculate-btn">CALCULAR</button>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="subtotal">
+                    <span>SUBTOTAL</span>
+                    <span>R$ {{ calcularSubtotal().toFixed(2) }}</span>
+                </div>
+            </div>
+
+            <div class="cart-actions">
+                <button class="checkout-btn">FINALIZAR COMPRA</button>
+                <button class="continue-btn">CONTINUAR COMPRANDO</button>
+            </div>
+        </div>
+    </div>
+</div>

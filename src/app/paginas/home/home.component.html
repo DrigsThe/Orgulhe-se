@@ -1,0 +1,112 @@
+<!-- Carrossel 1 -->
+<section class="slider">
+  <div class="carousel-container">
+    <div class="carousel-wrapper" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+      <div class="carousel-slide active">
+        <img src="assets/guardachuva.png" class="slide-image" alt="Slide 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="assets/guardachuva.png" class="slide-image" alt="Slide 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="assets/guardachuva.png" class="slide-image" alt="Slide 3">
+      </div>
+    </div>
+    
+    <button class="carousel-btn carousel-btn-prev" (click)="previousSlide()">
+      <span>&#8249;</span>
+    </button>
+    <button class="carousel-btn carousel-btn-next" (click)="nextSlide()">
+      <span>&#8250;</span>
+    </button>
+    
+    <div class="carousel-indicators">
+      <button 
+        *ngFor="let slide of slides; let i = index" 
+        class="indicator" 
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)">
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Carrossel Destaques -->
+<div class="sessao-titulo">DESTAQUES</div>
+<div class="carrossel-destaques-container">
+  <div class="carrossel-destaques-wrapper">
+    <div class="carrossel-destaques-scroll" #scrollContainer>
+      <div *ngFor="let imagem of imagens" class="carrossel-destaques-item">
+        <img [src]="imagem" alt="Imagem" class="img-carrossel">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Filtro e Produtos -->
+<div class="main-content">
+  <div class="content-wrapper">
+    <!-- Sidebar Filtros -->
+    <aside class="sidebar-filtros">
+      <div *ngFor="let categoria of categorias" class="categoria-grupo">
+        <h3 class="categoria-titulo">{{ categoria.nome }}</h3>
+        <div class="categoria-itens">
+          <div *ngFor="let item of categoria.itens" class="checkbox-item">
+            <input 
+              class="checkbox-input"
+              type="checkbox"
+              [id]="item.id"
+              [value]="item.nome"
+              (change)="onCategoriaChange($event)">
+            <label class="checkbox-label" [for]="item.id">
+              <span class="checkbox-custom"></span>
+              {{ item.nome }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Lista de Produtos -->
+    <main class="produtos-section">
+      <div class="produtos-grid">
+        <div *ngFor="let produto of produtosFiltrados" class="produto-card">
+          <div class="produto-imagem-container">
+            <img [src]="produto.imagem" class="produto-imagem" [alt]="produto.nome">
+            <button class="btn-comprar" (click)="comprar(produto)">
+              Comprar
+            </button>
+          </div>
+          
+          <div class="produto-info">
+            <div class="produto-detalhes">
+              <h4 class="produto-nome">{{ produto.nome }}</h4>
+              <p class="produto-preco">{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</p>
+            </div>
+            
+            <div *ngIf="produto.categoria && produto.categoria.length" class="produto-categorias">
+              <span class="categoria-badge" *ngFor="let cat of produto.categoria">
+                {{ cat }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast-container" [class.show]="showToast">
+  <div class="toast">
+    <div class="toast-content">
+      <span class="toast-icon">✓</span>
+      <span class="toast-text">Adicionado ao carrinho</span>
+    </div>
+    <button class="toast-close" (click)="hideToast()">×</button>
+  </div>
+</div>

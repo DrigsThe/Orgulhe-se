@@ -1,0 +1,252 @@
+<!-- user-profile.component.html -->
+<div class="profile-container">
+  <!-- Header com bandeira Pride -->
+  <div class="pride-header">
+    <div class="pride-stripes"></div>
+    <h1 class="page-title">Meu Perfil</h1>
+  </div>
+
+  <div class="profile-content">
+    <!-- Sidebar do usuário --> 
+    <div class="user-sidebar">
+      <div class="profile-card">
+        <div class="avatar-container">
+  <div class="avatar">
+    @if (userData().avatar) {
+      <img [src]="userData().avatar" alt="Foto de perfil" width="60" height="60" style="border-radius: 50%;">
+    } @else {
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="30" fill="url(#prideGradient)"/>
+        <circle cx="30" cy="22" r="8" fill="white"/>
+        <path d="M12 48c0-10 8-18 18-18s18 8 18 18" fill="white"/>
+        <defs>
+          <linearGradient id="prideGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e40303"/>
+            <stop offset="16.66%" style="stop-color:#ff8c00"/>
+            <stop offset="33.33%" style="stop-color:#ffed00"/>
+            <stop offset="50%" style="stop-color:#008018"/>
+            <stop offset="66.66%" style="stop-color:#0066ff"/>
+            <stop offset="83.33%" style="stop-color:#732982"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    }
+  </div>
+  <button class="edit-avatar-btn" (click)="triggerFileInput()">📷</button>
+  <input 
+    type="file" 
+    id="avatarInput" 
+    accept="image/*" 
+    style="display: none;" 
+    (change)="onFileSelected($event)">
+</div>
+        
+        <div class="user-info">
+          <h2>{{ userData().name }}</h2>
+          <p class="pronouns">{{ userData().pronouns }}</p>
+          <p class="email">{{ userData().email }}</p>
+          <p class="member-since">Membro desde Jan 2024</p>
+        </div>
+      </div>
+
+      <!-- Menu de navegação -->
+      <nav class="profile-nav">
+  <button 
+    *ngFor="let tab of tabs" 
+    [class.active]="activeTab() === tab.id"
+    (click)="setActiveTab(tab.id)"
+    class="nav-item">
+    <span class="nav-icon">{{ tab.icon }}</span>
+    <span class="nav-label">{{ tab.label }}</span>
+  </button>
+  
+  <!-- Adicione este botão novo -->
+  <button class="nav-item become-seller-btn" (click)="becomeSeller()">
+    <span class="nav-icon">💼</span>
+    <span class="nav-label">Torne-se um vendedor</span>
+  </button>
+</nav>
+      
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+      <!-- Aba Meus Pedidos -->
+      <div *ngIf="activeTab() === 'orders'" class="tab-content">
+        <div class="content-header">
+          <h3>Meus Pedidos</h3>
+          <div class="filter-buttons">
+            <button 
+              *ngFor="let filter of orderFilters" 
+              [class.active]="activeOrderFilter() === filter.value"
+              (click)="setOrderFilter(filter.value)"
+              class="filter-btn">
+              {{ filter.label }}
+            </button>
+          </div>
+        </div>
+
+        <div class="orders-grid">
+         <div *ngFor="let order of filteredOrders()" class="order-card">
+            <div class="order-header">
+              <div class="order-number">Pedido #{{ order.id }}</div>
+              <div class="order-status" [class]="'status-' + order.status">
+                {{ getStatusText(order.status) }}
+              </div>
+            </div>
+            
+            <div class="order-details">
+              <p class="order-date">{{ formatDate(order.date) }}</p>
+              <p class="order-total">Total: R$ {{ order.total.toFixed(2) }}</p>
+              <div class="order-items">
+                <p><strong>Items:</strong> {{ order.items.join(', ') }}</p>
+              </div>
+            </div>
+
+            <div class="order-actions">
+              <button class="btn-secondary">Ver Detalhes</button>
+              <button *ngIf="order.status === 'delivered'" class="btn-primary">Avaliar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Aba Meus Dados -->
+      <div *ngIf="activeTab() === 'data'" class="tab-content">
+        <div class="content-header">
+          <h3>Meus Dados</h3>
+          <button class="btn-primary" (click)="toggleEdit()">
+            {{ isEditing() ? 'Cancelar' : 'Editar' }}
+          </button>
+        </div>
+
+        <form class="user-form" (ngSubmit)="saveUserData()">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input 
+                type="text" 
+                id="name" 
+                [(ngModel)]="userData().name"
+                [disabled]="!isEditing()"
+                name="name">
+            </div>
+
+            <div class ="form-group">
+              <label for="email">E-mail</label>
+              <input 
+                type="email" 
+                id="email" 
+                [(ngModel)]="userData().email"
+                [disabled]="!isEditing()"
+                name="email">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                [(ngModel)]="userData().phone"
+                [disabled]="!isEditing()"
+                name="phone">
+            </div>
+
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input 
+                type="text" 
+                id="cpf" 
+                [(ngModel)]="userData().cpf"
+                [disabled]="!isEditing()"
+                name="cpf">
+            </div>
+
+            <div class="form-group">
+              <label for="birthDate">Data de Nascimento</label>
+              <input 
+                type="date" 
+                id="birthDate" 
+                [(ngModel)]="userData().birthDate"
+                [disabled]="!isEditing()"
+                name="birthDate">
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Identidade de Gênero</label>
+              <select 
+                id="gender" 
+                [(ngModel)]="userData().gender"
+                [disabled]="!isEditing()"
+                name="gender">
+                <option value="">Selecione</option>
+                <option value="homem-cis">Homem Cis</option>
+                <option value="mulher-cis">Mulher Cis</option>
+                <option value="homem-trans">Homem Trans</option>
+                <option value="mulher-trans">Mulher Trans</option>
+                <option value="nao-binario">Não-binário</option>
+                <option value="genero-fluido">Gênero Fluido</option>
+                <option value="outro">Outro</option>
+                <option value="prefiro-nao-informar">Prefiro não informar</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pronouns">Pronomes</label>
+              <select 
+                id="pronouns" 
+                [(ngModel)]="userData().pronouns"
+                [disabled]="!isEditing()"
+                name="pronouns">
+                <option value="">Selecione</option>
+                <option value="ele/dele">Ele/Dele</option>
+                <option value="ela/dela">Ela/Dela</option>
+                <option value="elu/delu">Elu/Delu</option>
+                <option value="qualquer">Qualquer pronome</option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="isEditing()" class="form-actions">
+            <button type="submit" class="btn-primary">Salvar Alterações</button>
+            <button type="button" class="btn-secondary" (click)="toggleEdit()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Aba Avaliações -->
+      <div *ngIf="activeTab() === 'reviews'" class="tab-content">
+        <div class="content-header">
+          <h3>Avaliações e Comentários</h3>
+          <div class="stats">
+            <span class="stat-item">{{ reviews().length }} avaliações</span>
+            <span class="stat-item">⭐ {{ averageRating() }} média</span>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <div *ngFor="let review of reviews()" class="review-card">
+            <div class="review-header">
+              <div class="product-info">
+                <h4>{{ review.productName }}</h4>
+                <div class="rating">
+                  <span *ngFor="let star of getStarsArray(review.rating)" class="star">⭐</span>
+                </div>
+              </div>
+              <div class="review-date">{{ formatDate(review.date) }}</div>
+            </div>
+            
+            <div class="review-content">
+              <p>{{ review.comment }}</p>
+            </div>
+
+            <div class="review-actions">
+              <button class="btn-secondary">Editar</button>
+              <button class="btn-secondary">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="container-principal">
+  <div class="container my-5">
+  <div class="row">
+    <!-- Galeria de Imagens -->
+    <div class="col-md-6">
+      <img 
+        [src]="imagens[imagemSelecionada]" 
+        alt="Imagem do Produto" 
+        class="img-fluid mb-3 img-principal" 
+        *ngIf="imagens.length > 0" 
+        />
+      <div class="row">
+        <div class="col-4 mb-2" *ngFor="let img of imagens; let idx = index">
+            <img 
+                [src]="img" 
+                alt="Miniatura {{idx + 1}}" 
+                class="img-miniatura"
+                [class.selecionada]="idx === imagemSelecionada"
+                (click)="imagemSelecionada = idx"
+            />
+            </div>
+        <div class="col-4 mb-2" *ngFor="let vazio of [].constructor(6 - imagens.length)">
+          <div class="bg-secondary" style="height: 100px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detalhes do Produto -->
+    <div class="col-md-6">
+      <h4>Produto Lindo</h4>
+      <p class="text-muted">Cód. #123456</p>
+      <h5>R$149,00</h5>
+
+      <p><strong>Cor:</strong>
+        <span *ngFor="let cor of cores; let i = index"
+                class="badge me-2 cursor-pointer"
+                [class.ms-2]="i === 0"
+                [ngStyle]="{
+                'background-color': corSelecionada.nome === cor.nome ? cor.valor : '#f8f9fa',
+                'color': corSelecionada.nome === cor.nome ? (cor.valor === 'white' ? '#222' : '#fff') : '#222',
+                'border': corSelecionada.nome === cor.nome ? '2px solid #222' : '1px solid #ccc'
+                }"
+                (click)="corSelecionada = cor">
+            {{ cor.nome }}
+        </span>
+        </p>
+      <p><strong>Tamanho:</strong>
+        <select class="form-select w-auto d-inline-block ms-2">
+          <option>P</option>
+          <option>M</option>
+          <option>G</option>
+        </select>
+      </p>
+
+      <div class="d-flex gap-2 my-2 align-items-center">
+        <span class="border rounded px-2 cursor-pointer" (click)="diminuirQuantidade()">-</span>
+        <span>{{ quantidade }}</span>
+        <span class="border rounded px-2 cursor-pointer" (click)="aumentarQuantidade()">+</span>
+      </div>
+
+      <button class="btn btn-dark mt-2" (click)="comprar()">ADICIONAR AO CARRINHO</button>
+
+      <p class="mt-4 descricao-produto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at velit maximus, molestie est a, tempor magna.
+      </p>
+    </div>
+  </div>
+
+  <!-- Sobre o Produto -->
+  <div class="row mt-5 align-items-center">
+    <div class="col-md-6">
+      <h6>Sobre o Produto</h6>
+      <p class="text-muted">  
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img 
+        [src]="imagens[0]" 
+        alt="Sobre o Produto" 
+        class="img-sobre" 
+      />
+    </div>
+  </div>
+
+  <!-- Tecnologias -->
+  <div class="row mt-4 align-items-center">
+    <div class="col-md-6">
+      <img 
+        [src]="imagens[1]" 
+ 
+        alt="Tecnologias do Produto" 
+        class="img-sobre" 
+      />
+    </div>
+    <div class="col-md-6">
+      <h6>Tecnologias do produto</h6>
+      <p class="text-muted">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet.
+      </p>
+    </div>
+  </div>
+
+  <!-- Avaliação -->
+  <div class="text-center mt-5">
+    <h5>2.9</h5>
+    <p>★★☆☆☆</p>
+    <p class="text-muted">Baseado em 23 avaliações</p>
+    <button class="btn btn-secondary">Avaliar</button>
+  </div>
+</div>
+  </div>
+
+
+
+<!-- Pop Up -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+  <div #toastCarrinho class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Adicionado ao carrinho
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

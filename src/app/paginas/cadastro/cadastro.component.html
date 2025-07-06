@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="login-section" id="overlay">
+        <h2 class="title">Cadastre-se</h2>
+
+        <button class="social facebook">Entre com Facebook<img class="icon" src="assets/logos/logo-facebook.png" alt="Logo Facebook"></button>
+        <button class="social google">Entre com Google <img src="assets/logos/logo-google.png" alt="Logo Google" class="icon"> </button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <form (ngSubmit)="onLogin()">
+            <input type="name" placeholder="Nome de Usuário" class="forms" name="usuario" required/>
+            <input type="email" placeholder="E-mail" class="forms" name="email" required/>
+            <input type="password" placeholder="Senha" class="forms" name="senha" required/>
+            <button type="submit" class="login-btn">Fazer Cadastro</button>
+        </form>
+
+        <div id="terms">
+            <input type="checkbox" name="termos" value="termos" id="privacy" required> Sim. Li e concordo com os <a href="#" id="link">Termos e Condições.</a>
+        </div>
+
+        <div class="account-section">
+            <a href="#" class="account"> Já possui conta? Faça login aqui.</a>
+        </div>
+
+        <div class="logos">
+            <img src="assets/logos/logo-uj.png" alt="Logo Unijorge">
+            <img src="assets/logos/logo-amado.png" alt="Logo Núcleo Amado">
+        </div>
+    </div>
+
+    <div class="image-section">
+        <img src="assets/img-cadastro.png" alt="Casal de duas mulhers">
+    </div>
+</div>

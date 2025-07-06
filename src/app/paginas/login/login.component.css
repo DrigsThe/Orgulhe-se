@@ -1,0 +1,145 @@
+body{
+    background: #1e1e1e;
+    color: #333;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.login-section{
+    width: 50%;
+    background-color: #cdb3ae;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.title{
+    font-size: 32px;
+    margin-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(to right, #FF4F5B, #FF983B, #FEAE24, #00C185, #006AD3, #EE71B1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+}
+
+.social{
+    width: 30%;
+    margin: 8px 0;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3pxx rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divider{
+    margin: 15px 0;
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.divider span{
+    background: #cdb3ae;
+    padding: 0 10px;
+    color: #333;
+    position: relative;
+    z-index: 1;
+}
+
+.divider::before{
+    content: '';
+    height: 1px;
+    background: #555;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+form{
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.forgot{
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 21px;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.login-btn{
+    padding: 10px;
+    background-color: #776C6B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-btn:hover{
+    background-color: #5a4f4d;
+}
+
+.create-account{
+    margin-top: 13px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #333;
+}
+
+.logos{
+    margin-top: 100px;
+    display: flex;
+    gap: 20px;
+}
+
+.logos img{
+    height: 40px;
+    object-fit: contain;
+}
+
+.image-section{
+    width: 50%;
+    background-color: #FEDDD6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-section img{
+    width: 80%;
+    height: auto;
+}
