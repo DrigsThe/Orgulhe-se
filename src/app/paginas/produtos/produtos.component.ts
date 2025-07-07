@@ -1,12 +1,16 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from '../../services/carrinho.service'
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.css'

@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
     <div class="login-section">
         <h2 class="title">Fazer Login</h2>
@@ -10,11 +11,11 @@
         <form (ngSubmit)="onLogin()">
             <input type="email" placeholder="E-mail" name="email" required>
             <input type="password" placeholder="Senha" name="senha" required>
-            <a href="#" class="forgot">Esqueceu a Senha?</a>
+            <a [routerLink]="['/recuperar-senha']" class="forgot">Esqueceu a Senha?</a>
             <button type="submit" class="login-btn">Fazer Login</button>
         </form>
 
-        <a href="#" class="create-account">Criar conta</a>
+        <a [routerLink]="['/cadastro']" class="create-account">Criar conta</a>
 
         <div class="logos">
             <img src="assets/logos/logo-uj.png" alt="Logo da Unijorge">
@@ -26,3 +27,4 @@
         <img src="assets/img-login.png" alt="Casal de duas mulheres comm bandeira LGBTQIAP+">
     </div>
 </div>
+<app-footer></app-footer>

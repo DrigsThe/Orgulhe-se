@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DadosFinais } from '../../interfaces/dados-finais';
-import { Produtos } from '../../interfaces/produtos'
+import { Produtos } from '../../interfaces/produtos';
 
 @Component({
   selector: 'app-checkout',

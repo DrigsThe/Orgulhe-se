@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Order, Product, TrackingStep} from '../../interfaces/pedido';
+import { Order } from '../../interfaces/pedido';
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-detalhes-pedido',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './detalhes-pedido.component.html',
   styleUrls: ['./detalhes-pedido.component.css']
 })
