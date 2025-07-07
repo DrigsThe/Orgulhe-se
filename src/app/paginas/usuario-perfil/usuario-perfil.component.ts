@@ -2,11 +2,13 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Order, UserData, Review, Tab, OrderFilter, StatusMap } from '../../interfaces/perfil';
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-usuario-perfil',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   templateUrl: './usuario-perfil.component.html',
   styleUrls: ['./usuario-perfil.component.css']
 })

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 interface Pedido {
   id: string;
@@ -13,7 +15,7 @@ interface Pedido {
 @Component({
   selector: 'app-vendedor-perfil',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   templateUrl: './vendedor-perfil.component.html',
   styleUrls: ['./vendedor-perfil.component.css']
 })

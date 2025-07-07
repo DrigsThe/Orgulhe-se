@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../../componentes/footer/footer.component';
+import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
   selector: 'app-adicionar-produto',
   standalone: true,
-  imports: [ FormsModule, CommonModule],
+  imports: [ FormsModule, CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './adicionar-produto.component.html',
   styleUrls: ['./adicionar-produto.component.css']
 })

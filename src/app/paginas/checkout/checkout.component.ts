@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DadosFinais } from '../../interfaces/dados-finais';
 import { Produtos } from '../../interfaces/produtos'
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'

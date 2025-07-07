@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoService } from '../../services/carrinho.service';
+import { HeaderComponent } from '../../componentes/header/header.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 interface Produto {
   id: number;
@@ -24,7 +26,7 @@ interface Categoria {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
