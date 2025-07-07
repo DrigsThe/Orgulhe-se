@@ -3,11 +3,6 @@
     <div class="login-section" id="overlay">
         <h2 class="title">Cadastre-se</h2>
 
-        <button class="social facebook">Entre com Facebook<img class="icon" src="assets/logos/logo-facebook.png" alt="Logo Facebook"></button>
-        <button class="social google">Entre com Google <img src="assets/logos/logo-google.png" alt="Logo Google" class="icon"> </button>
-
-        <div class="divider"><span>ou</span></div>
-
         <form (ngSubmit)="onLogin()">
             <input type="name" placeholder="Nome de Usuário" class="forms" name="usuario" required/>
             <input type="email" placeholder="E-mail" class="forms" name="email" required/>
@@ -20,7 +15,7 @@
         </div>
 
         <div class="account-section">
-            <a href="#" class="account"> Já possui conta? Faça login aqui.</a>
+            <a [routerLink]="['/login']" class="account"> Já possui conta? Faça login aqui.</a>
         </div>
 
         <div class="logos">
