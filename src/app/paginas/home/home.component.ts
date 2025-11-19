@@ -38,75 +38,61 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Imagens do carrossel de destaques
   imagens: string[] = [
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
-    'assets/jujuba.png',
+    'assets/perfume_lgbt.png',
+    'assets/botton_lgbt.jpg',
+    'assets/anel_lgbt.png',
+    'assets/cerveja_lgbt.png',
+    'assets/sacola_lgbt.png',
+    'assets/livro_lgbt.png',
+    'assets/adesivos_lgbt.png',
+    'assets/decoracao_lgbt.png',
+    'assets/doritos_rainbow.png',
   ];
 
   // Dados dos produtos
   produtos: Produto[] = [
     {
       id: 1,
-      nome: 'Vestido Midi Elegante',
-      preco: 148.75,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Vestidos', 'Feminino', 'Elegante']
+      nome: 'Livro "Esse Livro é Gay"',
+      preco: 59.90,
+      imagem: 'assets/livro_lgbt.png',
+      categoria: ['Livros', 'Gay', 'LGBTQIA+']
     },
     {
       id: 2,
-      nome: 'Saia Casual Social',
-      preco: 194.65,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Saias', 'Feminino', 'Casual']
+      nome: 'Kit 9 Adesivos Pride',
+      preco: 10.00,
+      imagem: 'assets/adesivos_lgbt.png',
+      categoria: ['Decorações', 'LGBTQIA+', 'Adesivos']
     },
     {
       id: 3,
-      nome: 'Blusa Estampada',
-      preco: 89.90,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Blusas', 'Feminino', 'Estampada']
+      nome: 'Anel do Orgulho',
+      preco: 29.90,
+      imagem: 'assets/anel_lgbt.png',
+      categoria: ['Acessórios', 'LGBTQIA+']
     },
     {
       id: 4,
-      nome: 'Calça Skinny',
+      nome: 'Bandeira LGBT',
       preco: 125.00,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Calças', 'Feminino', 'Skinny']
+      imagem: 'assets/bandeira_lgbt.png',
+      categoria: ['Acessórios', 'Decorações', 'LGBTQIA+']
     },
     {
       id: 5,
-      nome: 'Jaqueta Jeans',
-      preco: 180.00,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Jaquetas', 'Feminino', 'Jeans']
+      nome: 'Lata Skol Edição Limitada',
+      preco: 100.00,
+      imagem: 'assets/cerveja_lgbt.png',
+      categoria: ['Decoraçôes', 'LGBTQIA+']
     },
     {
       id: 6,
-      nome: 'Shorts Comfort',
+      nome: 'Batman LEGO Lgbt',
       preco: 65.50,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Shorts', 'Feminino', 'Comfort']
+      imagem: 'assets/batman_lgbt.png',
+      categoria: ['Decorações']
     },
-    {
-      id: 7,
-      nome: 'Macaquinho Floral',
-      preco: 135.75,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Macacões', 'Feminino', 'Floral']
-    },
-    {
-      id: 8,
-      nome: 'Cardigan Tricot',
-      preco: 98.90,
-      imagem: 'assets/jujuba.png',
-      categoria: ['Cardigans', 'Feminino', 'Tricot']
-    }
   ];
 
   // Categorias para filtros
@@ -114,27 +100,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       nome: 'Tipo',
       itens: [
-        { id: 'vestidos', nome: 'Vestidos' },
-        { id: 'saias', nome: 'Saias' },
-        { id: 'blusas', nome: 'Blusas' },
-        { id: 'calcas', nome: 'Calças' },
-        { id: 'jaquetas', nome: 'Jaquetas' },
-        { id: 'shorts', nome: 'Shorts' },
-        { id: 'macacoes', nome: 'Macacões' },
-        { id: 'cardigans', nome: 'Cardigans' }
+        { id: 'acesorios', nome: 'Acessórios' },
+        { id: 'decoracoes', nome: 'Decorações' },
+        { id: 'roupas', nome: 'Roupas' },
+        { id: 'calcado', nome: 'Calçado' },
+        { id: 'livros', nome: 'Livros' },
+        { id: 'adesivos', nome: 'Adesivos' },
       ]
     },
     {
-      nome: 'Estilo',
+      nome: 'Bandeira',
       itens: [
-        { id: 'elegante', nome: 'Elegante' },
-        { id: 'casual', nome: 'Casual' },
-        { id: 'estampada', nome: 'Estampada' },
-        { id: 'skinny', nome: 'Skinny' },
-        { id: 'jeans', nome: 'Jeans' },
-        { id: 'comfort', nome: 'Comfort' },
-        { id: 'floral', nome: 'Floral' },
-        { id: 'tricot', nome: 'Tricot' }
+        { id: 'lgbtqia', nome: 'LGBTQIA+' },
+        { id: 'lesbica', nome: 'Lésbica' },
+        { id: 'transgenero', nome: 'Transgênero' },
+        { id: 'gay', nome: 'Gay' },
+        { id: 'panssexual', nome: 'Panssexual' },
+        { id: 'bissexual', nome: 'Bissexual' },
+        { id: 'naobinario', nome: 'Não-Bínario' },
+        { id: 'assexual', nome: 'Assexual' }
       ]
     },
     {

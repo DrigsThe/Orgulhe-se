@@ -20,7 +20,7 @@ export class ProdutosComponent {
   @ViewChild('toastCarrinho', { static: false }) toastCarrinho!: ElementRef;
 
   imagens: string[] = [
-    'assets/amy.png',
+    'assets/perfume_lgbt.png',
     'assets/camisa.png',
     'assets/avatar.jpg',
     'assets/gato.png',
