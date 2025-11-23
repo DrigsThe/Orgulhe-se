@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CarrinhoService } from '../../services/carrinho.service';
+import { CarItem } from '../../interfaces/car-item';
 import { FormsModule } from '@angular/forms';
 import { DadosFinais } from '../../interfaces/dados-finais';
 import { Produtos } from '../../interfaces/produtos';
@@ -14,35 +17,9 @@ import { Produtos } from '../../interfaces/produtos';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
 })
-export class CheckoutComponent implements OnInit {
-  produtos: Produtos[] = [
-    {
-      nome: 'Vestido Midi - Preta / M',
-      preco: 148.75,
-      quantidade: 1,
-      imagemUrl: 'assets/jujuba.png',
-      variant: 'Preta / M',
-      originalPrice: 175.0,
-      discountInfo: 'PRIDE10 (-26,25)',
-    },
-    {
-      nome: 'Saia casual, social - Preta / P',
-      preco: 194.65,
-      quantidade: 1,
-      imagemUrl: 'assets/hornet.png',
-      variant: 'Preta / P',
-      originalPrice: 229.0,
-      discountInfo: 'PRIDE10 (-34,35)',
-    },
-    {
-      nome: 'Brinde Exclusivo - Eco-bag',
-      preco: 0,
-      quantidade: 1,
-      imagemUrl: 'assets/gato.png',
-      variant: 'SEU PEDIDO INCLUIRÁ UMA ECO-BAG',
-      isFree: true,
-    },
-  ];
+export class CheckoutComponent implements OnInit, OnDestroy {
+  produtos: Produtos[] = [];
+  private itemsSub: Subscription | null = null;
 
   dadosFinais: DadosFinais = {
     contato: '',
@@ -65,10 +42,26 @@ export class CheckoutComponent implements OnInit {
   message: { text: string; type: string } = { text: '', type: '' }; // Para mensagens de cupom
   showModal: boolean = false; // Para controlar a visibilidade do modal customizado
   modalContent: string = ''; // Conteúdo do modal customizado
+  constructor(private carrinhoService: CarrinhoService) {}
 
   ngOnInit(): void {
-    this.calcularSubtotal();
-    this.alterarTotal();
+    // Subscribe to cart items and map to checkout produtos
+    this.itemsSub = this.carrinhoService.items$.subscribe((items: CarItem[]) => {
+      this.produtos = items.map(it => ({
+        nome: it.nome,
+        preco: it.preco,
+        quantidade: it.quantidade,
+        imagemUrl: it.imagem,
+      } as Produtos));
+      this.calcularSubtotal();
+      this.alterarTotal();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.itemsSub) {
+      this.itemsSub.unsubscribe();
+    }
   }
 
   calcularSubtotal(): void {
@@ -125,6 +118,10 @@ export class CheckoutComponent implements OnInit {
     this.dadosFinais.frete = this.dadosFinais.entrega === 'express' ? 20.2 : 0;
     this.dadosFinais.total =
       this.dadosFinais.subtotal - this.dadosFinais.desconto + this.dadosFinais.frete;
+  }
+
+  get totalItens(): number {
+    return this.produtos.reduce((sum, p) => sum + (p.quantidade || 0), 0);
   }
 
   /**

@@ -20,7 +20,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
-    width: 50%;
+  width: auto;
+  max-width: 480px;
+  flex: 1;
 }
 
 .search-bar{
@@ -51,6 +53,8 @@
     display: flex;
     gap: 20px;
 }
+
+.navigation{ align-items: center; }
 
 .logo{
     width: 26px;
@@ -238,6 +242,29 @@
   .cart-panel {
     width: 100%;
   }
+}
+
+/* Header responsive stacking */
+@media (max-width: 768px) {
+  .header{
+    flex-wrap: wrap;
+    height: auto;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-principal{ order: 1; }
+  .navigation{
+    order: 2;
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-top: 0;
+  }
+  .search-container{ order: 3; width: 100%; margin-top: 8px; }
+  .logo-principal img{ width: 84px; max-height: 40px; }
+  .logo{ width: 28px; }
+  .divider{ height: 24px; }
 }
 
 .cart-overlay {

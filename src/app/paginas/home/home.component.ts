@@ -139,10 +139,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Toast notification
   showToast = false;
   toastTimeout: any;
+  // Mobile filters toggle
+  showFilters = false;
 
   ngOnInit(): void {
     this.produtosFiltrados = [...this.produtos];
     this.startCarouselAutoplay();
+  }
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
   }
 
   ngOnDestroy(): void {

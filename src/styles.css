@@ -8,3 +8,55 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Prevent horizontal scroll caused by elements slightly wider than viewport */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Layout helpers */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Make images and media scale to their containers */
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form elements should not overflow */
+input, button, textarea, select {
+  max-width: 100%;
+}
+
+/* Typography scaling for small screens */
+html { font-size: 16px; }
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}
+
+/* Common responsive breakpoints */
+@media (max-width: 1024px) {
+  .container { padding: 0 14px; }
+}
+
+@media (max-width: 768px) {
+  /* Stack header items and make search full-width */
+  .search-container{ width: 100%; max-width: 100%; padding: 6px; }
+  .navigation{ gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  /* Small screens adjustments */
+  .header { padding: 8px 12px; }
+  .logo-principal img { width: 80px; }
+  .search-container { display: none; }
+  .footer-container { padding: 20px 12px 12px; }
+  .data { flex-direction: column; gap: 12px; margin: 0 0; }
+}

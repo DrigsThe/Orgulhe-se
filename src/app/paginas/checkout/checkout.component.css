@@ -547,3 +547,75 @@
 .modal-button:hover {
   background-color: #1d4ed8; /* hover:bg-blue-700 */
 } 
+
+/* Mobile / tablet responsive rules */
+@media (max-width: 1023px) {
+  :host { padding: 20px 12px; height: auto; }
+  .checkout_container { flex-direction: column; max-width: 100%; border-radius: 8px; }
+  /* Fix header area to the top of the viewport on mobile: logo then breadcrumb */
+  .logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: #ffffff;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  .logo-container .logo-image { max-width: 160px; height: auto; display: block; }
+
+  .navegation {
+    position: fixed;
+    top: 56px; /* below logo */
+    left: 0;
+    right: 0;
+    z-index: 1090;
+    background: #ffffff;
+    padding: 8px 12px;
+    margin: 0;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  /* ensure summary visible below the fixed header, and content not hidden */
+  .checkout_summary { order: -1; width: 100%; padding: 16px; border-left: none; border-top: 1px solid #e5e7eb; margin-top: 110px; margin-bottom: 16px; }
+  .checkout_content { order: 0; width: 100%; padding: 16px; padding-top: 16px; }
+
+  .flex-group { flex-direction: column; }
+  .small-input, .large-input, .medium-input { width: 100%; }
+  .coupon-section { flex-direction: column; gap: 8px; }
+  .coupon-button { width: 100%; }
+  .finish-button { font-size: 1rem; padding-top: 10px; padding-bottom: 10px; }
+  .item-image { width: 64px; height: 64px; }
+  .item-quantity { top: -6px; right: -6px; width: 18px; height: 18px; font-size: 0.7rem; }
+}
+
+@media (max-width: 480px) {
+  :host { padding: 12px 8px; }
+  .checkout_content { padding: 12px; }
+  .checkout_summary { padding: 12px; }
+  .logo-image { max-width: 140px; }
+  .item-image { width: 56px; height: 56px; }
+  .section-title { font-size: 1rem; }
+  .total-row .total-label, .total-row .total-value { font-size: 0.95rem; }
+  .final-total .total-label, .final-total .total-value { font-size: 1.05rem; }
+}
+
+/* Help image sizing */
+.problem-help-image {
+  width: 80px;
+  height: auto;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1023px) {
+  .problem-help-image { width: 64px; }
+}
+
+@media (max-width: 480px) {
+  .problem-help-image { width: 48px; }
+}

@@ -47,10 +47,17 @@
 </div>
 
 <div class="divider"></div>
-
 <!-- Filtro e Produtos -->
+<!-- Filtro e Produtos -->
+<!-- Toggle filtros (mobile) -->
+<div class="filters-toggle">
+  <button class="toggle-filters-btn" (click)="toggleFilters()">
+    <span *ngIf="!showFilters">Mostrar filtros</span>
+    <span *ngIf="showFilters">Ocultar filtros</span>
+  </button>
+</div>
 <div class="main-content">
-  <div class="content-wrapper">
+  <div class="content-wrapper" [class.show-sidebar]="showFilters">
     <!-- Sidebar Filtros -->
     <aside class="sidebar-filtros">
       <div *ngFor="let categoria of categorias" class="categoria-grupo">

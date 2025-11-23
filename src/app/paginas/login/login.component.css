@@ -1,15 +1,14 @@
-body{
-    background: #1e1e1e;
-    color: #333;
-}
-
-.container{
+.login-container{
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
+    background: #1e1e1e; /* ensure full-bleed background on both sides */
+    margin: 0;
 }
 
 .login-section{
-    width: 50%;
+    flex: 1 1 50%;
+    min-width: 0;
     background-color: #cdb3ae;
     display: flex;
     flex-direction: column;
@@ -132,7 +131,8 @@ form input{
 }
 
 .image-section{
-    width: 50%;
+    flex: 1 1 50%;
+    min-width: 0;
     background-color: #FEDDD6;
     display: flex;
     align-items: center;
@@ -140,6 +140,28 @@ form input{
 }
 
 .image-section img{
-    width: 80%;
-    height: auto;
+        width: 80%;
+        height: auto;
+}
+
+/* Responsive: stack sections on small screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .login-section, .image-section {
+        flex: none;
+        width: 100%;
+        padding: 24px 20px;
+    }
+    .image-section {
+        order: 2;
+    }
+    .login-section {
+        order: 1;
+    }
+    .social { width: 100%; }
+    .divider { width: 100%; }
+    .logos { margin-top: 40px; }
 }

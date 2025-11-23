@@ -2,7 +2,7 @@
   <div class="checkout_content">
 
     <div class="logo-container">
-      <img src="assets/Logomarca.png" alt="Logomarca da Loja" class="logo-image">
+      <img src="assets/logos/logo-amado-header.png" alt="Logomarca da Loja" class="logo-image">
     </div>
 
     <nav style="--bs-breadcrumb-divider: '>';" class="navegation" aria-label="breadcrumb">
@@ -120,12 +120,12 @@
            Reporte o problema nesse <a href="#" class="problem-link">formulário</a>.
         </p>
       </div>
-      <img src="assets/imagem_apoio.png" alt="Ícone de ajuda" class="problem-help-image">
+      <img src="assets/interrogação.png" alt="Ícone de ajuda" class="problem-help-image">
     </div>
 
     <div class="total-summary">
       <div class="total-row">
-        <p class="total-label">Subtotal: <span class="item-count">(2 itens)</span></p>
+        <p class="total-label">Subtotal: <span class="item-count">({{ totalItens }} itens)</span></p>
         <p class="total-value">R$ {{ dadosFinais.subtotal.toFixed(2) }}</p>
       </div>
       <div class="total-row">

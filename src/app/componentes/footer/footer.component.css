@@ -118,3 +118,12 @@ h6{
     width: 40px;
     margin-right: 10px;
 }
+
+@media (max-width: 768px) {
+    .footer-container{ padding: 24px 12px; }
+    .data{ flex-direction: column; gap: 16px; margin: 0 12px 0; }
+    .data > div{ flex: 1 1 auto; }
+    .logos{ margin: 0 12px; }
+    .image-footer{ margin-left: 0; width: 100%; }
+    .follow{ margin-right: 0; }
+}
