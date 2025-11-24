@@ -1,0 +1,19 @@
+[project]
+name = "ecommerce"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "customtkinter>=5.2.2",
+    "databases>=0.9.0",
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "mysqlclient>=2.2.7",
+    "pandas>=2.3.0",
+    "pydantic>=2.11.7",
+    "pytest>=8.4.2",
+    "python-multipart>=0.0.20",
+    "sqlalchemy>=2.0.41",
+    "uvicorn[standard]>=0.34.3",
+]
